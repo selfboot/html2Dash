@@ -46,12 +46,12 @@ Valid `OPTIONS` are the following:
 
 # Demo
 
-1. 生成bs4的文档`beautifulsoup4.docset`，命令如下：
+生成requests的文档`requests.docset`，命令如下：
 
-	$ ./html2dash.py -n requests -i ~/Documents/requests-sidebar.png ~/Documents/requests  
-	Create the Docset Folder!  
-	Copy the HTML Documentation!  
-	Create the SQLite Index    
-	Create the Info.plist File  
-	Create the Icon for the Docset!  
-	Generate Docset Successfully!  
+    $ ./html2dash.py -n requests -i ~/Documents/requests-sidebar.png ~/Documents/requests  
+    Create the Docset Folder!  
+    Copy the HTML Documentation!  
+    Create the SQLite Index    
+    Create the Info.plist File  
+    Create the Icon for the Docset!  
+    Generate Docset Successfully!  
