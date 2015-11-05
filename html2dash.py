@@ -118,9 +118,13 @@ if __name__ == "__main__":
     dsidx_path = docset_name + "/Contents/Resources/docSet.dsidx"
     icon_path = docset_name + "/icon.png"
     info = docset_name + "/Contents/info.plist"
-    docset_path = results.path + doc_path
-    sqlite_path = results.path + dsidx_path
-    info_path = results.path + info
+
+    destpath = results.path
+    if results.path and results.path[-1] != "/":
+        destpath += "/"
+    docset_path = destpath + doc_path
+    sqlite_path = destpath + dsidx_path
+    info_path = destpath + info
 
     # print docset_path, sqlite_path
 

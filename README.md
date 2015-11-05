@@ -44,9 +44,13 @@ Valid `OPTIONS` are the following:
 
 	Show a brief usage summary and exit.
 
+DEPENDENCIES:  
+	
+* BeautifulSoup HTML parsing library
+
 # Demo
 
-生成requests的文档`requests.docset`，命令如下：
+Generate the Docset for requests: `requests.docset`. Command：
 
     $ ./html2dash.py -n requests -i ~/Documents/requests-sidebar.png ~/Documents/requests  
     Create the Docset Folder!  
