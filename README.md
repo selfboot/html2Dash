@@ -4,7 +4,11 @@ html2Dash is an Documentation Set generator intended to be used with the [Dash.a
 
 If you’ve never heard of Dash.app, you’re missing out: together with html2Dash it’s all your API documentation at your fingertips!
 
-It’s tested on Python 2.7, OS X 10.9
+Third part library required:
+   
+    beautifulsoup4==4.3.2
+
+It’s tested on Python 2.7, OS X 10.9.
 
 # How to Use
 
@@ -59,3 +63,5 @@ Generate the Docset for requests: `requests.docset`. Command：
     Create the Info.plist File  
     Create the Icon for the Docset!  
     Generate Docset Successfully!  
+
+
