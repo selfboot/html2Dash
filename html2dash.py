@@ -27,7 +27,7 @@ def update_db(name, path):
 
 def add_urls():
     index_page = open(os.path.join(docset_path, 'index.html')).read()
-    soup = BeautifulSoup(index_page)
+    soup = BeautifulSoup(index_page, "html.parser")
     any = re.compile('.*')
     for tag in soup.find_all('a', {'href': any}):
         name = tag.text.strip()
@@ -136,7 +136,8 @@ if __name__ == "__main__":
 
     # Copy the HTML Documentation to the Docset Folder
     try:
-        subprocess.call(["cp", "-r", results.SOURCE + "/", docset_path])
+        arg_list = ["cp", "-r"] + [source_dir + "/" + f for f in os.listdir(source_dir)] + [docset_path]
+        subprocess.call(arg_list)
         print "Copy the HTML Documentation!"
     except:
         print "**Error**:  Copy Html Documents Failed..."
