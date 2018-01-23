@@ -25,8 +25,8 @@ def update_db(name, path):
         pass
 
 
-def add_urls():
-    index_page = open(os.path.join(docset_path, 'index.html')).read()
+def add_urls(index_page):
+    index_page = open(os.path.join(docset_path, index_page)).read()
     soup = BeautifulSoup(index_page, "html.parser")
     any = re.compile('.*')
     for tag in soup.find_all('a', {'href': any}):
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     sqlite_path = destpath + dsidx_path
     info_path = destpath + info
 
-    # print docset_path, sqlite_path
+    print docset_path, sqlite_path
 
     if not os.path.exists(docset_path):
         os.makedirs(docset_path)
@@ -165,16 +165,16 @@ if __name__ == "__main__":
     cur.execute('CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);')
     print "Create the SQLite Index"
 
-    add_urls()
-    db.commit()
-    db.close()
-
-    # Create the Info.plist File
     if not results.index_page:
         index_page = "index.html"
     else:
         index_page = results.index_page
 
+    add_urls(index_page)
+    db.commit()
+    db.close()
+
+    # Create the Info.plist File
     add_infoplist(info_path, index_page)
 
     # Add icon file if defined
