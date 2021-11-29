@@ -116,7 +116,7 @@ if __name__ == "__main__":
     # create docset directory and copy files
     doc_path = docset_name + "/Contents/Resources/Documents"
     dsidx_path = docset_name + "/Contents/Resources/docSet.dsidx"
-    icon_path = docset_name + "/icon.png"
+    icon = docset_name + "/icon.png"
     info = docset_name + "/Contents/info.plist"
 
     destpath = results.path
@@ -125,6 +125,7 @@ if __name__ == "__main__":
     docset_path = destpath + doc_path
     sqlite_path = destpath + dsidx_path
     info_path = destpath + info
+    icon_path = destpath + icon
 
     # print docset_path, sqlite_path
 
