@@ -6,6 +6,8 @@ import os
 import re
 import sqlite3
 import subprocess
+import shutil
+
 from bs4 import BeautifulSoup
 
 
@@ -74,7 +76,8 @@ def add_infoplist(info_path, index_page):
 
 def clear_trash():
     try:
-        subprocess.call(["rm", "-r", docset_name])
+        shutil.rmtree(docset_name)
+        # subprocess.call(["rm", "-r", docset_name])
         print("Clear generated useless files!")
     except:
         print("**Error**:  Clear trash failed...")
@@ -137,14 +140,15 @@ if __name__ == "__main__":
         print("Docset Folder already exist!")
 
     # Copy the HTML Documentation to the Docset Folder
-    try:
-        arg_list = ["cp", "-r"] + [source_dir + "/" + f for f in os.listdir(source_dir)] + [docset_path]
-        subprocess.call(arg_list)
-        print("Copy the HTML Documentation!")
-    except:
-        print( "**Error**:  Copy Html Documents Failed...")
-        clear_trash()
-        exit(2)
+    for subdir in os.listdir(source_dir):
+        try:
+            shutil.copytree(os.path.join(source_dir, subdir), os.path.join(docset_path, subdir))
+        except NotADirectoryError as not_dir:
+            try:
+                shutil.copy(os.path.join(source_dir, subdir), os.path.join(docset_path, subdir))
+            except:
+                clear_trash()
+                raise "**Error**:  Copy Html Documents Failed..." from not_dir
 
     # create and connect to SQLite
     try:
