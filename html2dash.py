@@ -76,7 +76,8 @@ def add_infoplist(info_path, index_page):
 
 def clear_trash():
     try:
-        subprocess.call(["rm", "-r", docset_name])
+        shutil.rmtree(docset_name)
+        # subprocess.call(["rm", "-r", docset_name])
         print("Clear generated useless files!")
     except:
         print("**Error**:  Clear trash failed...")
